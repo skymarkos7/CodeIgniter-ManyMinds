@@ -57,7 +57,7 @@ session_start();
  <form method="POST">
  	<h1 id="bem-vindo">Seja Bem-Vindo Visitante</h1>
  	
- 	<br><br><input id="email" class="input" placeholder="Digite seu E-Mail" type="tex" name="email" required><br><br>
+ 	<br><br><input id="email" class="input" placeholder="Digite seu E-Mail" type="email" name="email" required><br><br>
 
  	<input placeholder="Digite sua Senha" type="password" id="senha" class="input" name="senha" required><br><br><br>
  	<button id="entrar">ENTRAR</button><br><br><br><br>

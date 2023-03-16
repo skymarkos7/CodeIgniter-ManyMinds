@@ -22,6 +22,8 @@ class Login extends CI_Controller {
 	public function cadastro() {
 		
 		$this->load->view("cadastroView");
+
+		var_dump($_POST['email']);
 		
 	}
 
