@@ -13,7 +13,7 @@ class Login extends CI_Controller {
 
 		$data = array("LoginModel" => $result);
 
-		$this->load->view('loginView', $data);	
+		$this->load->view('login/loginView', $data);	
 
 	}
 
@@ -21,12 +21,22 @@ class Login extends CI_Controller {
 
 	public function cadastro() {
 		
-		$this->load->view("cadastroView");
+		$this->load->view("login/cadastroView");
 
-		var_dump($_POST['email']);
 		
+		if (isset($_POST['email'])) {
+			var_dump($_POST['email']);			
+		}
 	}
 
+
+
+	public function product() {
+		
+		$this->load->view("products/productView");
+
+		
+	}
 
 
 	public function list_array() {

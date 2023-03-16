@@ -24,9 +24,9 @@
 
 // //------------------  conexão com o banco ----------------------
 
-// 	$dsn = "mysql:dbname=sonho;host=localhost";//declara a variavel de conexão
-// 	$dbuser = "root";  //declara a variavel de usuario
-// 	$dbpass = "";  // declara a variavel de senha ( vazio para xampp e wampp e "root" para macbook)
+	// $dsn = "mysql:dbname=many_minds;host=localhost";//declara a variavel de conexão
+	// $dbuser = "root";  //declara a variavel de usuario
+	// $dbpass = "manypass";  // declara a variavel de senha ( vazio para xampp e wampp e "root" para macbook)
 
 
 // //------------------ fim da conexão com o banco ----------------
@@ -57,6 +57,7 @@ $login[] = $email;
 var_dump($login);
 
 ?>
+
 
 
 </body>

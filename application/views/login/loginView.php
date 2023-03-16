@@ -70,10 +70,13 @@ session_start();
 		foreach ($LoginModel as $p) { // trazendo infos do banco 
 		// echo "$p->user";
 			$user = $p->user;
+			//$pass = $p->pass;
 		}
 
+		//echo $user;
 		if($email == $user){  // verificação de login
-			echo "Logado";
+			header("Location: product");
+			die();
 		}elseif($email !== $user){
 			echo "<b style='color:red'>Login incorreto, verifique e tente novamente</b>"; // aviso de login incorreto
 		}
