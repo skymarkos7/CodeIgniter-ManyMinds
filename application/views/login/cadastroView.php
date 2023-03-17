@@ -4,8 +4,6 @@
 	<link rel="icon" href="img/m.png" type="image/x-icon" />
 	<title>Cadastro</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="estilo/cadastro.css">
-	<script src="js/validar.js" type="text/javascript"></script>
 </head>
 <body>
 

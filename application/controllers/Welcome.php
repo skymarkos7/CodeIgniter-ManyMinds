@@ -3,23 +3,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/userguide3/general/urls.html
-	 */
-	public function index()
-	{
-		$this->load->view('welcome_message');
+	public function index()	{
+		
+		session_start(); //inicia uma sessão
+
+		if(isset($_SESSION['id']) && empty($_SESSION['id']) == false)   {  //verifica se já foi feito login recentemente e mostra o html a baixo "pagina principal do site"
+
+		//inicio do site
+			echo " 
+
+			<!DOCTYPE html>
+			<html>
+			<head>
+				<title>Marcola</title>
+			</head>
+			<body>
+				
+				<div>site aqui</div>
+
+			</body>
+			</html>
+
+			";		
+
+} else {
+
+	header("Location:index.php/login/index"); // leva o usuário até a página de login caso ele não esteja logado
+
+}
+
+
+
+		
 	}
 }
