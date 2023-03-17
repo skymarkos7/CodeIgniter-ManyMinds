@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			if (isset($_POST['email']) && empty($_POST['email']) == false) { //verifica se o e-mail está vazio
 				$email = addslashes($_POST['email']); //recebe o email
-				$senha = base64_encode(addslashes($_POST['senha']));  //recebe a senha digitada ( addslashes impede que o usuario manipule o banco)
+				$senha = base64_encode(addslashes($_POST['pass']));  //recebe a senha digitada ( addslashes impede que o usuario manipule o banco)
 			}
 		?>
 
@@ -29,26 +29,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="wrap-login100">
 					<div class="login100-pic js-tilt" data-tilt>
 						<img src="https://www.freeiconspng.com/uploads/user-login-icon-14.png">
-					</div>
+					</div>					
 
-						<?php	
-							if (isset($email)) {
-								foreach ($LoginModel as $p) { // trazendo infos do banco
-									
-									$user = $p->user;
-									
-								}
-
-								if ($email == $user) {  
-									header("Location: product");
-									die();
-								} elseif ($email !== $user) {
-									echo "<b style='color:red'>Login incorreto, você tem mais ".$attempt." tentativas</b>"; // aviso de login incorreto
-								}
-							}
-						?>
-
-					<form class="login100-form validate-form">
+					<form method="post" class="login100-form validate-form">
 						<span class="login100-form-title">
 							Login do Membro
 						</span>
@@ -70,10 +53,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
 
 						<div class="container-login100-form-btn">
-							<button class="login100-form-btn">
+							<button  class="login100-form-btn">
 								Login
 							</button>
 						</div><br>
+
+						<?php	
+							if (isset($email)) {
+								foreach ($LoginModel as $p) { // trazendo infos do banco
+									
+									$user = $p->user;
+									//$pass = $p->pass;
+									
+								}
+
+								if ($email == $user) {  
+									header("Location: product");
+									die();
+								} elseif ($email !== $user) {
+									echo "<b style='color:red'>Login incorreto, você tem mais tentativas</b>"; // aviso de login incorreto
+								}
+							}
+						?>
 
 						<div class="text-center p-t-136">
 							<a href="cadastro" class="txt2" href="#">
