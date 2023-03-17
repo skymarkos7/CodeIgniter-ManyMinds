@@ -10,8 +10,7 @@ class Login extends CI_Controller {
 		$this->load->model("LoginModel", "LoginModel");
 
 		$result = $this->LoginModel->list_user();
-
-		$data = array("LoginModel" => $result);
+		$data   = array("LoginModel" => $result);
 
 		$this->load->view('login/loginView', $data);	
 
@@ -22,7 +21,6 @@ class Login extends CI_Controller {
 	public function cadastro() {
 		
 		$this->load->view("login/cadastroView");
-
 		
 		if (isset($_POST['email'])) {
 			var_dump($_POST['email']);			
@@ -34,26 +32,23 @@ class Login extends CI_Controller {
 	public function product() {
 		
 		$this->load->view("products/productView");
-
 		
 	}
 
 
-	public function list_array() {
 
-		echo "list";
+	public function list_array() {
 
 		$this->load->model("LoginModel", "LoginModel");
 
 		$result = $this->LoginModel->list_user();
 
 		echo '<pre>';
-
 		var_dump($result);
-
 		echo '<pre>';
 
 	}
+
 
 
 	public function list_table() {
@@ -61,11 +56,9 @@ class Login extends CI_Controller {
 		$this->load->model("LoginModel", "LoginModel");
 
 		$result = $this->LoginModel->list_user();
-
 		$dados = array("LoginModel" => $result);
 
 		$this->load->view("lista_tabela_teste", $dados);
 
-		//	$this->load->database();
 	}
 }
