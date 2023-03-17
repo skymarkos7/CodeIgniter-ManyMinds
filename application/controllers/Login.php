@@ -29,11 +29,11 @@ class Login extends CI_Controller {
 
 
 
-	public function product() {
+	// public function product() {
 		
-		$this->load->view("products/productView");
+	// 	$this->load->view("products/productView");
 		
-	}
+	// }
 
 
 
