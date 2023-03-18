@@ -23,6 +23,7 @@ table, th, td {
 	<th>Estado unitário</th>
 	<th>Cep</th>
 	<th>Rua</th>
+	<th>Ação</th>
   </tr>
 
   <?php
@@ -49,6 +50,7 @@ table, th, td {
 		echo "<td>".$estado[$i]."</td>";
 		echo "<td>".$cep[$i]."</td>";
 		echo "<td>".$rua[$i]."</td>";
+		echo "<td><a href='#'><img width=20 src='https://cdn-icons-png.flaticon.com/512/1159/1159633.png'></a></td>";
 		echo "</tr>";	
 		
 		$i++;

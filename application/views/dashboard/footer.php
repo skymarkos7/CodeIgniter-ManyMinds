@@ -8,7 +8,7 @@
 			<div class="app-footer-left">
 				<ul class="nav">
 					<li class="nav-item">
-						<a href="https://www.facebook.com/654.asd.gfwfw/" class="nav-link">
+						<a href="https://www.linkedin.com/in/skymarkos7/" class="nav-link">
 							Copyright© 2023 - Marcos Lourenço de Souza
 						</a>
 					</li>

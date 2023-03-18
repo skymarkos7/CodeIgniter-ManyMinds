@@ -20,6 +20,7 @@ table, th, td {
     <th>Produto</th>
     <th>Fornecedor</th> 
     <th>Situação</th>
+	<th>Ação</th>
   </tr>
 
   <?php
@@ -34,6 +35,8 @@ table, th, td {
 		echo "<td>".$nome[$i]."</td>";
 		echo "<td>".$fornecedor[$i]."</td>";
 		echo "<td>".$ativo_inativo[$i]."</td>";
+		echo "<td><a href='#'><img width=20 src='https://cdn-icons-png.flaticon.com/512/1159/1159633.png'></a></td>";
+		
 		echo "</tr>";	
 		
 		$i++;
