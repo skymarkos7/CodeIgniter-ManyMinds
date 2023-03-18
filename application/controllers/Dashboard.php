@@ -14,8 +14,13 @@ class Dashboard extends CI_Controller {
 
 
 	public function produtos()	{
+
+		$this->load->model("ProductModel", "ProductModel");
+
+		$result = $this->ProductModel->list_product();
+		$data   = array("ProductModel" => $result);
 		
-		$this->load->view('dashboard/produtosView.php');	
+		$this->load->view('dashboard/produtosView.php', $data);	
 
 	}
 
