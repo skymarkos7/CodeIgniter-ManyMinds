@@ -16,7 +16,6 @@ class Dashboard extends CI_Controller {
 	public function produtos()	{
 
 		$this->load->model("ProductModel", "ProductModel");
-
 		$result = $this->ProductModel->list_product();
 		$data   = array("ProductModel" => $result);
 		
@@ -26,8 +25,12 @@ class Dashboard extends CI_Controller {
 
 
 	public function pedidos()	{
+
+		$this->load->model("PedidosModel", "PedidosModel");
+		$result = $this->PedidosModel->list_pedidos();
+		$data   = array("PedidosModel" => $result);
 		
-		$this->load->view('dashboard/pedidosView.php');	
+		$this->load->view('dashboard/pedidosView.php', $data);	
 
 	}
 
