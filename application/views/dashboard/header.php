@@ -82,7 +82,7 @@
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                             class="p-0 btn">
                                             <!----- imagem de Login ---->
-                                            <img width="42" class="rounded-circle" src="../img/m.png" alt="">
+                                            
 
                                             <i> ⌵</i>
                                         </a>
@@ -162,7 +162,7 @@
                             <a href="pedidos">
                                 <i class="metismenu-icon pe-7s-diamond">
                                     <i class="metismenu-icon pe-7s-car">
-                                        <img src="../img/icone/puzzle-plus.png" alt="">
+                                        
                                     </i>
                                 </i>
                                 Pedidos
@@ -174,7 +174,7 @@
                             <a href="#">
                                 <i class="metismenu-icon pe-7s-diamond">
                                     <i class="metismenu-icon pe-7s-diamond">
-                                        <img src="../img/icone/arrow-down-circle-outline.png" alt="">
+                                        
                                     </i>
                                 </i>
                                 Colaborador
@@ -186,7 +186,7 @@
                                     <a href="usuario">
                                         <i class="metismenu-icon"></i>
                                         Usuário
-                                        <img src="../img/icone/minus-circle-outline.png" alt="">
+                                        
                                     </a>
                                 </li>
                                 <li>
@@ -203,7 +203,7 @@
                             <a href="produtos">
                                 <i class="metismenu-icon pe-7s-diamond">
                                     <i class="metismenu-icon pe-7s-car">
-                                        <img src="../img/icone/barcode.png" alt="">
+                                        
                                     </i>
                                 </i>
                                 Produtos

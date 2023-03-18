@@ -43,6 +43,8 @@
 
 
 <style>
+
+
 /*!
 =========================================================
 * ArchitectUI HTML Theme Dashboard - v1.0.0
@@ -53,7 +55,10 @@
 =========================================================
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
-
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
 
 .list-group-item-alternate {
 color: #3f2848;
@@ -4897,11 +4902,6 @@ align-items: center;
 transition: width 0.2s;
 }
 
-.app-header__logo .logo-src {
-height: 23px;
-width: 97px;
-background: url(assets/images/logo-inverse.png);
-}
 
 .app-header__menu,
 .app-header__mobile-menu {
