@@ -36,8 +36,12 @@ class Dashboard extends CI_Controller {
 
 
 	public function usuario()	{
+
+		$this->load->model("UserModel", "UserModel");
+		$result = $this->UserModel->list_user();
+		$data   = array("UserModel" => $result);
 		
-		$this->load->view('dashboard/usuarioView.php');	
+		$this->load->view('dashboard/usuarioView.php', $data);	
 
 	}
 
