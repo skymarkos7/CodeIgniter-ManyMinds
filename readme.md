@@ -5,3 +5,5 @@
 	- comunicar no telegram as tentativas de login
 	
 
+- Banco
+	- O uso de forenkey causa lentidão ao banco

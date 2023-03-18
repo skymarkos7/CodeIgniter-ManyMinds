@@ -13,4 +13,31 @@ class Dashboard extends CI_Controller {
 	}
 
 
+	public function produtos()	{
+		
+		$this->load->view('dashboard/produtosView.php');	
+
+	}
+
+
+	public function pedidos()	{
+		
+		$this->load->view('dashboard/pedidosView.php');	
+
+	}
+
+
+	public function usuario()	{
+		
+		$this->load->view('dashboard/usuarioView.php');	
+
+	}
+
+	public function fornecedor()	{
+		
+		$this->load->view('dashboard/fornecedorView.php');	
+
+	}
+
+
 }

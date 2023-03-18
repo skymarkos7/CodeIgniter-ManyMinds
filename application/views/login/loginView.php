@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								}
 
 								if ($email == $user) {  
-									header("Location: ../dashboard");
+									header("Location: ../dashboard/index");
 									die();
 								} elseif ($email !== $user) {
 									echo "<b style='color:red'>Login incorreto, você tem mais tentativas</b>"; // aviso de login incorreto

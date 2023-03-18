@@ -3,7 +3,7 @@ include_once('header.php');
 ?>
 
 
-<h1>página principal</h1>
+<h3>Página de fornecedor</h3>
 
 
 <?php
