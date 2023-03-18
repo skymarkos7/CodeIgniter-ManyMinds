@@ -42,8 +42,12 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function fornecedor()	{
+
+		$this->load->model("FornecedorModel", "FornecedorModel");
+		$result = $this->FornecedorModel->list_fornecedor();
+		$data   = array("FornecedorModel" => $result);
 		
-		$this->load->view('dashboard/fornecedorView.php');	
+		$this->load->view('dashboard/fornecedorView.php', $data);	
 
 	}
 
