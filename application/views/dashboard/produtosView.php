@@ -46,7 +46,8 @@
 	
      
 </table>
-<p>Adicione um novo produto</p>
+<br>
+<h4>Adicionar novo produto</h4>
 			
 		
 
@@ -54,7 +55,7 @@
 	<input name="nome" placeholder="Nome do produto" type="text">
 	<input name="fornecedor" placeholder="Fornecedor" type="text">
 	<input name="situacao" placeholder="Situação" type="text">
-  	<input type="submit" value="Inserir novo produto">
+	<a href="produtos"><input type="submit" value="Inserir novo produto"></a>
 </form>
 
 <?php
@@ -66,7 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 		$result = $this->ProductModel->insert_product($products);
 		
-		return $products;
+		return $products;	
 
 }
+
 ?>

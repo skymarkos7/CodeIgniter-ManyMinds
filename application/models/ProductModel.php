@@ -21,6 +21,7 @@ class ProductModel extends CI_Model {
 		// 	'ativo_inativo' => 'ativo'
 		// );
 
-		 $this->db->insert('produtos', $products);
+		 $this->db->insert('produtos', $products);		 
+		 header("Location:produtos");
 	}
 }
