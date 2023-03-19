@@ -14,4 +14,15 @@ class PedidosModel extends CI_Model {
 
 		return $result;
 	}
+
+	public function insert_pedidos($pedidos) {
+		// $data = array(
+		// 	'nome_produto' => 'tv smart',
+		// 	'fornecedor_produto' => 'LG',
+		// 	'ativo_inativo' => 'ativo'
+		// );
+
+		 $this->db->insert('pedidos', $pedidos);		 
+		 header("Location:pedidos");
+	}
 }

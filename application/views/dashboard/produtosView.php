@@ -61,15 +61,15 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		$products['nome_produto']       = $_POST['nome'];
-		$products['fornecedor_produto'] = $_POST['fornecedor'];
-		$products['ativo_inativo']      = $_POST['situacao'];
+	$products['nome_produto']       = $_POST['nome'];
+	$products['fornecedor_produto'] = $_POST['fornecedor'];
+	$products['ativo_inativo']      = $_POST['situacao'];
 		
-		$result = $this->ProductModel->insert_product($products);
+	$result = $this->ProductModel->insert_product($products);
 		
-		return $products;	
+	return $products;	
 
 }
-$result = $this->ProductModel->inativo_product();
+//$result = $this->ProductModel->inativo_product();
 
 ?>

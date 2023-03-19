@@ -1,7 +1,3 @@
-<?php
-include_once('header.php');
-?>
-
 
 <h2>Página de pedidos</h2>
 <p>Aqui você poderá ver, editar, adicionar ou inativar pedidos</p>
@@ -45,13 +41,36 @@ include_once('header.php');
 		}
 		$i++;
 			    
-	}
-	
+	}	
 
 	?>
      
 </table>
 
+
+<br>
+<h4>Realizar um novo pedido</h4>	
+
+<form method="POST" action="">
+	<input name="fornecedor" placeholder="Fornecedor do produto" type="text">
+	<input name="observacao" placeholder="Observação" type="text">
+	<input name="situacao" placeholder="ativo_finalizado" type="text"> <!-- Inserir automaticamente pegando data atual-->
+	<input name="quantidade" placeholder="quantidade" type="text">
+	<input name="preco" placeholder="Preço unitário" type="text">
+	<a href="pedidos"><input type="submit" value="Fazer pedido"></a>
+</form>
+
 <?php
-include_once('footer.php');
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	$pedidos['fornecedor_produto']    = $_POST['fornecedor'];
+	$pedidos['observacao'] = $_POST['observacao'];
+	$pedidos['ativo_finalizado']    = $_POST['situacao'];
+	$pedidos['quantidade']           = $_POST['quantidade'];
+	$pedidos['preco_unitario']           = $_POST['preco'];
+		
+	$this->PedidosModel->insert_pedidos($pedidos);
+		
+	return $pedidos;	
+}
 ?>

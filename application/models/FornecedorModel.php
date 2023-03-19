@@ -19,4 +19,16 @@ class FornecedorModel extends CI_Model {
 
 		return $result;
 	}
+
+
+	public function insert_fornecedor($fornecedor) {
+		// $data = array(
+		// 	'nome_produto' => 'tv smart',
+		// 	'fornecedor_produto' => 'LG',
+		// 	'ativo_inativo' => 'ativo'
+		// );
+
+		 $this->db->insert('colaborador', $fornecedor);		 
+		 header("Location:fornecedor");
+	}
 }

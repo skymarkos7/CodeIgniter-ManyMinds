@@ -12,7 +12,7 @@ include_once('header.php');
     <th>Nome do colaborador</th> 
     <th>Data de cadastro</th>
 	<th>Cidade</th>
-	<th>Estado unitário</th>
+	<th>Estado</th>
 	<th>Cep</th>
 	<th>Rua</th>
   </tr>
@@ -84,37 +84,36 @@ include_once('header.php');
 });
 </script>
 
+<br>
+<h4>Adicionar novo fornecedor</h4>	
 
-<!-- <table class="tabelaEditavel">
-        <thead>
-            <tr>
-                <th>Código</th>
-                <th>Nome</th>
-                <th>E-mail</th>
-                <th>Telefone</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>001</td>
-                <td>João Carlos</td>
-                <td>joca@email.com</td>
-                <td>(21) 9999-8888</td>
-            </tr>
-            <tr>
-                <td>002</td>
-                <td>Maria Silva</td>
-                <td>mariasilva@mail.com</td>
-                <td>(81) 8787-8686</td>
-            </tr>
-            <tr>
-                <td>003</td>
-                <td>José Pedro</td>
-                <td>zepedro@meuemail.com</td>
-                <td>(84) 3232-3232</td>
-            </tr>
-        </tbody>
-    </table> -->
+<form method="POST" action="">
+	<input name="situacao" placeholder="Situação" type="text">
+	<input name="colaborador" placeholder="Nome do colaborador" type="text">
+	<input name="data" placeholder="data de cadastro" type="text"> <!-- Inserir automaticamente pegando data atual-->
+	<input name="cidade" placeholder="cidade" type="text">
+	<input name="estado" placeholder="estado" type="text">
+	<input name="cep" placeholder="cep" type="text">
+	<input name="rua" placeholder="rua" type="text">
+	<a href="fornecedor"><input type="submit" value="Inserir novo produto"></a>
+</form>
+
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	$fornecedor['ativo_inativo']    = $_POST['situacao'];
+	$fornecedor['nome_colaborador'] = $_POST['colaborador'];
+	$fornecedor['data_cadastro']    = $_POST['data'];
+	$fornecedor['cidade']           = $_POST['cidade'];
+	$fornecedor['estado']           = $_POST['estado'];
+	$fornecedor['cep']              = $_POST['cep'];
+	$fornecedor['rua']              = $_POST['rua'];
+		
+	$this->FornecedorModel->insert_fornecedor($fornecedor);
+		
+	return $fornecedor;	
+}
+?>
 
 <?php
 include_once('footer.php');

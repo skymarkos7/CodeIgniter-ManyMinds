@@ -32,7 +32,9 @@ class Dashboard extends CI_Controller {
 		$result = $this->PedidosModel->list_pedidos();
 		$data   = array("PedidosModel" => $result);
 		
-		$this->load->view('dashboard/pedidosView.php', $data);	
+		$this->load->view('dashboard/header.php');
+		$this->load->view('dashboard/pedidosView.php', $data);
+		$this->load->view('dashboard/footer.php');		
 
 	}
 
@@ -43,7 +45,9 @@ class Dashboard extends CI_Controller {
 		$result = $this->UserModel->list_user();
 		$data   = array("UserModel" => $result);
 		
+		$this->load->view('dashboard/header.php');
 		$this->load->view('dashboard/usuarioView.php', $data);	
+		$this->load->view('dashboard/footer.php');	
 
 	}
 
@@ -53,7 +57,9 @@ class Dashboard extends CI_Controller {
 		$result = $this->FornecedorModel->list_fornecedor();
 		$data   = array("FornecedorModel" => $result);
 		
-		$this->load->view('dashboard/fornecedorView.php', $data);	
+		$this->load->view('dashboard/header.php');
+		$this->load->view('dashboard/fornecedorView.php', $data);
+		$this->load->view('dashboard/footer.php');		
 
 	}
 
