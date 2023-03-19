@@ -131,7 +131,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 					<div >
 						<label for="permissao">Nível de permissão</label>
-						<select name="acesso" id="permissao">
+						<select name="level" id="permissao">
 						<option value="1">Acesso total</option>
 						<option value="2">Acesso Limitado</option>
 						</select>
@@ -163,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$user['estado']             = $_POST['estado'];
 	$user['cep']                = $_POST['cep'];
 	$user['rua']                = $_POST['rua'];
-	//$user['level_acess']        = $_POST['level'];
+	$user['level_acess']        = $_POST['level'];
 	$user['usuario_fornecedor'] = 'usuario';
 		
 	$this->LoginCadastroModel->insert_user($user);
