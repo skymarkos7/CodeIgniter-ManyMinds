@@ -84,7 +84,7 @@
                                     <div class="btn-group">
                                         <a href="../login/index" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                             class="p-0 btn">
-                                            <i style="color:red"> Sair de <?php echo($_SESSION['name']);  ?></i>
+                                            <i style="color:red"> Sair de <?php echo($_SESSION['name']);  ?></i>											
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true"
                                             class="dropdown-menu dropdown-menu-right">
@@ -103,7 +103,7 @@
 
                                     </div>
                                     <div class="widget-subheading">
-                                        Administrador
+									<?php echo($_SESSION['level_acess']);  ?>
 										
                                     </div>
                                 </div>
@@ -173,30 +173,13 @@
                         </li>
 
 
-                        <li>
-                            <a >
-                                <i class="metismenu-icon pe-7s-diamond">
-                                    <i class="metismenu-icon pe-7s-diamond">                                        
-                                    </i>
-                                </i>
-                                Colaborador
-                                <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="usuario">
-                                        <i class="metismenu-icon"></i>
-                                        Usuário                                        
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="fornecedor">
-                                        <i class="metismenu-icon">
-                                        </i>Fornecedor
-                                    </a>
-                                </li>                        	
-                        	</ul>
-                        </li>
+						<?php 
+							if ($_SESSION['level_acess'] == 'Administrador') {
+								$colaborador = "<li><a><i class=metismenu-icon pe-7s-diamond'><i class='metismenu-icon pe-7s-diamond'></i></i>Colaborador<i class='metismenu-state-icon pe-7s-angle-down caret-left'></i></a><ul><li><a href='usuario'><i class='metismenu-icon'></i>Usuário</a></li><li><a href='fornecedor'><i class='metismenu-icon'></i>Fornecedor</a></li></ul></li>";
+								echo $colaborador;
+							}
+						 ?>
+                        
 
                         <li>
                             <a href="produtos">
