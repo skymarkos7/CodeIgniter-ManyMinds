@@ -82,12 +82,15 @@
                             <div class="widget-content-wrapper">
                                 <div class="widget-content-left">
                                     <div class="btn-group">
-                                        <a href="<?php session_destroy(); ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                        <a href="../login/index" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                             class="p-0 btn">
 
                                             
 											
                                             <i style="color:red"> Sair</i>
+											<!-- <form method="POST" action="">
+												<input value="Sair" type="submit">
+											</form> -->
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true"
                                             class="dropdown-menu dropdown-menu-right">
