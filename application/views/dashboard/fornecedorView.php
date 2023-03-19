@@ -1,6 +1,3 @@
-<?php
-include_once('header.php');
-?>
 
 
 <h2>Página de fornecedores</h2>
@@ -115,6 +112,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<?php
-include_once('footer.php');
-?>

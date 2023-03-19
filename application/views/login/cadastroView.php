@@ -1,35 +1,3 @@
-<?php 
-
-
-
-// if(isset($_POST['email']) && ($_POST['email'] != "")) //verifica se o e-mail está vazio
-// {
-// 	if(isset($_POST['senha']) && ($_POST['senha'] != "")) //verifica se a senha está vazia
-// 	{
-// 		if(isset($_POST['nome']) && ($_POST['nome'] != "")) //verifica se o nome está vazio
-// 		{
-
-// 			$email = addslashes($_POST['email']);  //recebe o email digitado
-// 			$login[] = $email;
-
-// 			$senha = base64_encode(addslashes($_POST['senha']));  //recebe a senha digitada
-// 			$login[] = $senha;
-
-// 			$nome = $_POST['nome'];  //recebe o nome digitado
-// 			$login[] = $nome;
-
-			
-// 			var_dump($login);
-			
-// 		}
-
-// 	}
-// }
-
-
-?>
-
-
 
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -149,17 +117,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </html>
 
 <?php
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-	$user['nome_colaborador']   = $_POST['nome'];
-	$user['user'] 		        = $_POST['user'];
-	$user['pass']               = $_POST['pass'];
-	$user['data_cadastro']      = $_POST['data'];
-	$user['cidade']             = $_POST['cidade'];
-	$user['estado']             = $_POST['estado'];
-	$user['cep']                = $_POST['cep'];
-	$user['rua']                = $_POST['rua'];
-	$user['level_acess']        = $_POST['level'];
+	$user['nome_colaborador']   = addslashes($_POST['nome']);
+	$user['user'] 		        = addslashes($_POST['user']);
+	$user['pass']               = base64_encode(addslashes($_POST['pass']));
+	$user['data_cadastro']      = addslashes($_POST['data']);
+	$user['cidade']             = addslashes($_POST['cidade']);
+	$user['estado']             = addslashes($_POST['estado']);
+	$user['cep']                = addslashes($_POST['cep']);
+	$user['rua']                = addslashes($_POST['rua']);
+	$user['level_acess']        = addslashes($_POST['level']);
 	$user['usuario_fornecedor'] = 'usuario';
 		
 	$this->LoginCadastroModel->insert_user($user);

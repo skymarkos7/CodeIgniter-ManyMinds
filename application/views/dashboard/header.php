@@ -1,9 +1,13 @@
 <?php
 	session_start();
 
-	if (!isset($_POST['id']) || empty($_POST['id']) == true) {
-		header("Location:login/index");
-	}
+	// if (!isset($_POST['id']) || empty($_POST['id']) == true) {
+	// 	//header("Location:../login/index");
+	// 	echo "ooooooooooooo";
+	// }
+
+	var_dump("ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+	
 ?>
 
 
@@ -81,7 +85,7 @@
                                         <a href="../login/index" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                             class="p-0 btn">
 
-                                            <form action="<?php echo tryLogin()?>" method="post" name="logout">
+                                            
 											
                                             <i style="color:red"> Sair</i>
                                         </a>

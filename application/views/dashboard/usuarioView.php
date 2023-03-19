@@ -1,7 +1,3 @@
-<?php
-include_once('header.php');
-?>
-
 
 <h2>Página de usuários</h2>
 <p>Aqui você poderá <span style="color:green"><b>ver</b></span>, <span style="color:chocolate"><b>editar</b></span> ou <span style="color:red"><b>inativar</b></span> usuários</p>
@@ -54,7 +50,3 @@ include_once('header.php');
 	?>
      
 </table>
-
-<?php
-include_once('footer.php');
-?>

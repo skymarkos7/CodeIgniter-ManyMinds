@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['id']   =  $id;
 		$_SESSION['user'] =  $user;
 		$_SESSION['name'] =  $result[0]->nome_colaborador;
-		header("Location: ../dashboard/index");
+		header("Location: ../dashboard/");
 			
 	}else{
 		echo "<b style='color:red'>Login incorreto, você tem {{}} tentativas restantes</b>"; // aviso de login incorreto
