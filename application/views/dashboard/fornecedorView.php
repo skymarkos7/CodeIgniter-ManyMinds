@@ -4,7 +4,7 @@ include_once('header.php');
 
 
 <h2>Página de fornecedores</h2>
-<p>Aqui você poderá ver, editar, adicionar ou inativar fornecedores</p>
+<p>Aqui você poderá <span style="color:green"><b>ver</b></span>, <span style="color:chocolate"><b>editar</b></span>, <span style="color:blue"><b>adicionar</b></span> ou <span style="color:red"><b>inativar</b></span> fornecedores</p>
 
 <table class="tabelaEditavel" style="width:100%">
   <tr>

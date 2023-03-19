@@ -1,6 +1,6 @@
 
 <h2>Página de pedidos</h2>
-<p>Aqui você poderá ver, editar, adicionar ou inativar pedidos</p>
+<p>Aqui você poderá <span style="color:green"><b>ver</b></span>, <span style="color:chocolate"><b>editar</b></span>, <span style="color:blue"><b>adicionar</b></span> ou <span style="color:red"><b>inativar</b></span> pedidos</p>
 
 <table style="width:100%">
   <tr>

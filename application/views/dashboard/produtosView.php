@@ -1,6 +1,6 @@
 	
 <h2>Página de produtos</h2>
-<p>Aqui você poderá ver, editar, adicionar ou inativar produtos</p>
+<p>Aqui você poderá <span style="color:green"><b>ver</b></span>, <span style="color:chocolate"><b>editar</b></span>, <span style="color:blue"><b>adicionar</b></span> ou <span style="color:red"><b>inativar</b></span> produtos</p>
 
 <table style="width:100%">
   <tr>
