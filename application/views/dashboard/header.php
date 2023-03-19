@@ -1,14 +1,21 @@
+<?php
+	session_start();
+
+	if (!isset($_POST['id']) || empty($_POST['id']) == true) {
+		header("Location:login/index");
+	}
+?>
+
+
 <!doctype html>
 <html lang="pt-br">
 
 <head>
-    <!-- PARA BARRA DE PESQUISA --------->
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
 
     <meta charset="utf-8">
     <meta http-equiv="Content-Language" content="pt-br">
@@ -23,11 +30,9 @@
 </head>
 
 
-
 <body>
 
-
-    <div id="menu_retratil" ; class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+    <div id="menu_retratil" class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
                 <div class="logo-src"></div>
@@ -64,12 +69,6 @@
             <div class="app-header__content">
                 <div class="app-header-left">
 
-                    <!--aqui ficava o botão de pesquisar -->
-
-
-
-                    <!-- fim do pesquisar ----->
-
                     <ul class="header-menu nav">
                     </ul>
                 </div>
@@ -81,9 +80,9 @@
                                     <div class="btn-group">
                                         <a href="../login/index" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                             class="p-0 btn">
-                                            <!----- imagem de Login ---->
-                                            
 
+                                            <form action="<?php echo tryLogin()?>" method="post" name="logout">
+											
                                             <i style="color:red"> Sair</i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true"
@@ -170,23 +169,22 @@
                             </a>
                             
                         </li>
+
+
                         <li>
-                            <a href="#">
+                            <a >
                                 <i class="metismenu-icon pe-7s-diamond">
-                                    <i class="metismenu-icon pe-7s-diamond">
-                                        
+                                    <i class="metismenu-icon pe-7s-diamond">                                        
                                     </i>
                                 </i>
                                 Colaborador
                                 <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                             </a>
                             <ul>
-
                                 <li>
                                     <a href="usuario">
                                         <i class="metismenu-icon"></i>
-                                        Usuário
-                                        
+                                        Usuário                                        
                                     </a>
                                 </li>
                                 <li>
@@ -194,11 +192,10 @@
                                         <i class="metismenu-icon">
                                         </i>Fornecedor
                                     </a>
-                                </li>
+                                </li>                        	
+                        	</ul>
+                        </li>
 
-                        </li>
-                        </ul>
-                        </li>
                         <li>
                             <a href="produtos">
                                 <i class="metismenu-icon pe-7s-diamond">

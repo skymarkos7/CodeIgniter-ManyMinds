@@ -1,28 +1,30 @@
 
 
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+	defined('BASEPATH') OR exit('No direct script access allowed');
+
+	session_start();
+	$_SESSION['id'] =  session_id();
+	
+
+	if (isset($_POST['user']) && empty($_POST['user']) == false) {  //verifica se o e-mail está preenchido
+		$user = addslashes($_POST['user']);                        //recebe o email
+		$pass = base64_encode(addslashes($_POST['pass']));         //recebe a senha digitada ( addslashes impede que o usuario manipule o banco)
+		$id    = $_SESSION['id'];
+	}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 	<head>
-		<title>Login lap</title>
+		<title>Login</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 
 	<body>
 
-		<?php
-			session_start();
-
-			if (isset($_POST['email']) && empty($_POST['email']) == false) { //verifica se o e-mail está vazio
-				$email = addslashes($_POST['email']); //recebe o email
-				$senha = base64_encode(addslashes($_POST['pass']));  //recebe a senha digitada ( addslashes impede que o usuario manipule o banco)
-			}
-		?>
 
 		<div class="limiter">
 			<div class="container-login100">
@@ -37,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</span>
 
 						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-							<input class="input100" type="text" name="email" placeholder="Email">
+							<input class="input100" type="text" name="user" placeholder="Email">
 							<span class="focus-input100"></span>
 							<span class="symbol-input100">
 								<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -59,21 +61,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div><br>
 
 						<?php	
-							if (isset($email)) {
-								foreach ($LoginModel as $p) { // trazendo infos do banco
+							// if (isset($user)) {
+							// 	foreach ($LoginModel as $p) { // trazendo infos do banco
 									
-									$user = $p->user;
-									//$pass = $p->pass;
+							// 		$user = $p->user;
+							// 		//$pass = $p->pass;
 									
-								}
+							// 	}
 
-								if ($email == $user) {  
-									header("Location: ../dashboard/index");
-									die();
-								} elseif ($email !== $user) {
-									echo "<b style='color:red'>Login incorreto, você tem {{}} tentativas restantes</b>"; // aviso de login incorreto
-								}
-							}
+
+							// 	if ($email == $user) {  
+							// 		header("Location: ../dashboard/index");
+							// 		die();
+							// 	} elseif ($email !== $user) {
+							// 		echo "<b style='color:red'>Login incorreto, você tem {{}} tentativas restantes</b>"; // aviso de login incorreto
+							// 	}
+							// }
+							echo $user;
+							echo $pass;
+							echo $id;
 						?>
 
 						<div class="text-center p-t-136">
