@@ -1,13 +1,13 @@
 <?php
 	session_start();
-
-	// if (!isset($_POST['id']) || empty($_POST['id']) == true) {
-	// 	//header("Location:../login/index");
-	// 	echo "ooooooooooooo";
-	// }
-
-	var_dump("ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
 	
+	if(isset($_SESSION['id'])){
+		echo "id setado";
+	}else{
+		header("Location:../login/index");
+		session_destroy();
+	}
+?>
 ?>
 
 

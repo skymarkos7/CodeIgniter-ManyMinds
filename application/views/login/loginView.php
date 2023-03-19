@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		header("Location: ../dashboard/");
 			
 	}else{
-		echo "<b style='color:red'>Login incorreto, você tem {{}} tentativas restantes</b>"; // aviso de login incorreto
+		$incorrect = "<b style='color:red'>Login incorreto, você tem {{}} tentativas restantes</b>"; // aviso de login incorreto
 	}
 
 }
@@ -75,6 +75,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							<button  class="login100-form-btn">
 								Login
 							</button>
+							<?php 
+								if(isset($incorrect )){
+									echo $incorrect;
+								}							
+							?>
 						</div><br>
 
 						<div class="text-center p-t-136">
