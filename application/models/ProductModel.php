@@ -24,4 +24,15 @@ class ProductModel extends CI_Model {
 		 $this->db->insert('produtos', $products);		 
 		 header("Location:produtos");
 	}
+
+
+	public function inativo_product() {
+
+		$data = array(
+			'ativo_inativo' => 'inativo'
+		);
+		
+		$this->db->where('id', 1);
+		$this->db->update('produtos', $data);
+	}
 }

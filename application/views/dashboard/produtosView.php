@@ -31,7 +31,7 @@
 			echo "<td>".$nome[$i]."</td>";
 			echo "<td>".$fornecedor[$i]."</td>";
 			echo "<td>".$ativo_inativo[$i]."</td>";	
-			echo "<td><button id='myButton'>Desativar</button></td>";	
+			echo "<td><button>Desativar</button></td>";	
 			echo "</tr>";			
 		
 		}
@@ -70,5 +70,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		return $products;	
 
 }
+$result = $this->ProductModel->inativo_product();
 
 ?>
