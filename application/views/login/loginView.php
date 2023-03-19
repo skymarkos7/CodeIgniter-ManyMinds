@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['user'] =  $user;
 		$_SESSION['name'] =  $result[0]->nome_colaborador;
 		header("Location: ../dashboard/");
+		die;
 			
 	}else{
 		$incorrect = "<b style='color:red'>Login incorreto, você tem {{}} tentativas restantes</b>"; // aviso de login incorreto
@@ -97,7 +98,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 </html>
 
-<?php session_destroy(); ?>
+<?php 
+session_destroy(); 
+?>
 
 <script>
 	
