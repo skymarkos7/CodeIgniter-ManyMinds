@@ -84,13 +84,7 @@
                                     <div class="btn-group">
                                         <a href="../login/index" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                             class="p-0 btn">
-
-                                            
-											
-                                            <i style="color:red"> Sair</i>
-											<!-- <form method="POST" action="">
-												<input value="Sair" type="submit">
-											</form> -->
+                                            <i style="color:red"> Sair de <?php echo($_SESSION['name']);  ?></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true"
                                             class="dropdown-menu dropdown-menu-right">
@@ -110,6 +104,7 @@
                                     </div>
                                     <div class="widget-subheading">
                                         Administrador
+										
                                     </div>
                                 </div>
                             </div>

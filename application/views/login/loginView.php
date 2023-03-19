@@ -21,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['id']   =  $id;
 		$_SESSION['user'] =  $user;
 		$_SESSION['name'] =  $result[0]->nome_colaborador;
+		$_SESSION['level_acess'] =  $result[0]->level_acess;
+
 		header("Location: ../dashboard/");
 		die;
 			

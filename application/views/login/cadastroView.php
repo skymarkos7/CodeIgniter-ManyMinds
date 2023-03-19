@@ -96,8 +96,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div >
 						<label for="permissao">Nível de permissão</label>
 						<select name="level" id="permissao">
-						<option value="1">Acesso total</option>
-						<option value="2">Acesso Limitado</option>
+						<option value="Administrador">Administrador</option>
+						<option value="Usuario comum">Comum</option>
 						</select>
 						<p style="color:red">*Com nível limitado o menu de colaboradores é oculto</p>
                     </div>

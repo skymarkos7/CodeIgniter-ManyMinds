@@ -1,4 +1,14 @@
 
+/*
+ * Super Usuário  - master@gmail.com
+ * senha		  - master
+ *
+ * Usuário limitado  - comum@gmail.com
+ * senha			 - comum@gmail.com
+ */
+
+ 
+
 - Tela de Login  
 	- Responssivo  
 	- 3 tentativas, bloqueio por 30 segundos
