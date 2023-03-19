@@ -82,7 +82,7 @@
                             <div class="widget-content-wrapper">
                                 <div class="widget-content-left">
                                     <div class="btn-group">
-                                        <a href="../login/index" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                        <a href="<?php session_destroy(); ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                             class="p-0 btn">
 
                                             
