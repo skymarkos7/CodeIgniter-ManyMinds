@@ -1,17 +1,34 @@
 
 
 <?php
-	defined('BASEPATH') OR exit('No direct script access allowed');
 
-	session_start();
-	$_SESSION['id'] =  session_id();
-	
+defined('BASEPATH') or exit('No direct script access allowed');
+session_start();  // inicia a sessão
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	if (isset($_POST['user']) && empty($_POST['user']) == false) {  //verifica se o e-mail está preenchido
-		$user = addslashes($_POST['user']);                        //recebe o email
-		$pass = base64_encode(addslashes($_POST['pass']));         //recebe a senha digitada ( addslashes impede que o usuario manipule o banco)
-		$id    = $_SESSION['id'];
+    $user = addslashes($_POST['user']);                             //recebe o email ( addslashes impede que o usuario manipule o banco)
+    $pass = base64_encode(addslashes($_POST['pass']));              //recebe a senha digitada ( addslashes impede que o usuario manipule o banco)
+    $id   = session_id();	                                        //Gera um id para a sessão
 	}
+
+	$result = $this->LoginModel->list_user($user);
+	//var_dump($result[0]->user);
+
+	if($result[0]->user == $user && $pass == $result[0]->pass){	 //verifica se existe o usuário digitado e se a senha está correta.		  
+		$_SESSION['id']   =  $id;
+		$_SESSION['user'] =  $user;
+		$_SESSION['name'] =  $result[0]->nome_colaborador;
+		header("Location: ../dashboard/index");
+			
+	}else{
+		echo "<b style='color:red'>Login incorreto, você tem {{}} tentativas restantes</b>"; // aviso de login incorreto
+	}
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +56,7 @@
 						</span>
 
 						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-							<input class="input100" type="text" name="user" placeholder="Email">
+							<input required class="input100" type="text" name="user" placeholder="Email">
 							<span class="focus-input100"></span>
 							<span class="symbol-input100">
 								<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -47,7 +64,7 @@
 						</div>
 
 						<div class="wrap-input100 validate-input" data-validate="Password is required">
-							<input class="input100" type="password" name="pass" placeholder="Senha">
+							<input required class="input100" type="password" name="pass" placeholder="Senha">
 							<span class="focus-input100"></span>
 							<span class="symbol-input100">
 								<i class="fa fa-lock" aria-hidden="true"></i>
@@ -59,28 +76,6 @@
 								Login
 							</button>
 						</div><br>
-
-						<?php	
-							// if (isset($user)) {
-							// 	foreach ($LoginModel as $p) { // trazendo infos do banco
-									
-							// 		$user = $p->user;
-							// 		//$pass = $p->pass;
-									
-							// 	}
-
-
-							// 	if ($email == $user) {  
-							// 		header("Location: ../dashboard/index");
-							// 		die();
-							// 	} elseif ($email !== $user) {
-							// 		echo "<b style='color:red'>Login incorreto, você tem {{}} tentativas restantes</b>"; // aviso de login incorreto
-							// 	}
-							// }
-							echo $user;
-							echo $pass;
-							echo $id;
-						?>
 
 						<div class="text-center p-t-136">
 							<a href="cadastro" class="txt2" href="#">

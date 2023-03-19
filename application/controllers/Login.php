@@ -9,10 +9,10 @@ class Login extends CI_Controller {
 	public function index()	{
 		$this->load->model("LoginModel", "LoginModel");
 
-		$result = $this->LoginModel->list_user();
-		$data   = array("LoginModel" => $result);
+		// $result = $this->LoginModel->list_user();
+		// $data   = array("LoginModel" => $result);
 
-		$this->load->view('login/loginView', $data);	
+		$this->load->view('login/loginView');	
 
 	}
 
