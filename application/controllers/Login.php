@@ -19,21 +19,15 @@ class Login extends CI_Controller {
 
 
 	public function cadastro() {
-		
+
+		$this->load->model("LoginCadastroModel", "LoginCadastroModel");
+				
 		$this->load->view("login/cadastroView");
 		
-		if (isset($_POST['email'])) {
-			var_dump($_POST['email']);			
-		}
+		// if (isset($_POST['email'])) {
+		// 	var_dump($_POST['email']);			
+		// }
 	}
-
-
-
-	// public function product() {
-		
-	// 	$this->load->view("products/productView");
-		
-	// }
 
 
 

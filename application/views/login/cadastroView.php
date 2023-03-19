@@ -1,36 +1,35 @@
 <?php 
 
-// //------------------  conexão com o banco ----------------------
-
-	// $dsn = "mysql:dbname=many_minds;host=localhost";//declara a variavel de conexão
-	// $dbuser = "root";  //declara a variavel de usuario
-	// $dbpass = "manypass";  // declara a variavel de senha ( vazio para xampp e wampp e "root" para macbook)
 
 
-// //------------------ fim da conexão com o banco ----------------
+// if(isset($_POST['email']) && ($_POST['email'] != "")) //verifica se o e-mail está vazio
+// {
+// 	if(isset($_POST['senha']) && ($_POST['senha'] != "")) //verifica se a senha está vazia
+// 	{
+// 		if(isset($_POST['nome']) && ($_POST['nome'] != "")) //verifica se o nome está vazio
+// 		{
 
+// 			$email = addslashes($_POST['email']);  //recebe o email digitado
+// 			$login[] = $email;
 
-if(isset($_POST['email']) && ($_POST['email'] != "")) //verifica se o e-mail está vazio
-{
-	if(isset($_POST['senha']) && ($_POST['senha'] != "")) //verifica se a senha está vazia
-	{
-		if(isset($_POST['nome']) && ($_POST['nome'] != "")) //verifica se o nome está vazio
-		{
+// 			$senha = base64_encode(addslashes($_POST['senha']));  //recebe a senha digitada
+// 			$login[] = $senha;
 
-			$email = addslashes($_POST['email']);  //recebe o email digitado
-			$senha = base64_encode(addslashes($_POST['senha']));  //recebe a senha digitada
-			$nome = $_POST['nome'];  //recebe o nome digitado
+// 			$nome = $_POST['nome'];  //recebe o nome digitado
+// 			$login[] = $nome;
+
 			
-		}
+// 			var_dump($login);
+			
+// 		}
 
-	}
-}
+// 	}
+// }
 
-$login[] = $nome;
-$login[] = $senha;
-$login[] = $email;
 
-var_dump($login);
+
+
+
 
 ?>
 
@@ -59,13 +58,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <img src="https://www.freeiconspng.com/uploads/user-login-icon-14.png">
                 </div>
 
-                <form class="login100-form validate-form">
+                <form method="POST" action="" class="login100-form validate-form">
                     <span class="login100-form-title">
 						Cadastrar novo colaborador
+						<p style="color:red">*Fornecedores são cadastrados dentro do sistema</p>
 					</span>
+					
 
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="name" placeholder="Nome">
+                        <input required class="input100" type="text" name="nome" placeholder="*Nome">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -73,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="email" name="email" placeholder="Email">
+                        <input required class="input100" type="email" name="user" placeholder="*Email">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -81,27 +82,60 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="pass" placeholder="Senha">
+                        <input required class="input100" type="password" name="pass" placeholder="*Senha">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
                     </div>
 
-					<div >
-						<label for="colaborador">Tipo de colaborador:</label>
-						<select id="colaborador">
-						<option value="cliente">Cliente</option>
-						<option value="fornecedor">Fornecedor</option>
-						</select>
+					<div class="wrap-input100 validate-input" >
+                        <input class="input100" type="date" name="data" placeholder="data do cadastro">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                    </div>
+
+					<div class="wrap-input100 validate-input" >
+                        <input class="input100" type="text" name="cidade" placeholder="cidade">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                    </div>
+
+					<div class="wrap-input100 validate-input" >
+                        <input class="input100" type="text" name="estado" placeholder="estado">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                    </div>
+
+					<div class="wrap-input100 validate-input" data-validate="">
+                        <input class="input100" type="text" name="cep" placeholder="cep">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                    </div>
+
+					<div class="wrap-input100 validate-input" >
+                        <input class="input100" type="text" name="rua" placeholder="rua">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
                     </div><br>
 
 					<div >
 						<label for="permissao">Nível de permissão</label>
-						<select id="permissao">
-						<option value="1">Nível 1 - Máxima</option>
-						<option value="2">Nível 2 - Limitada</option>
+						<select name="acesso" id="permissao">
+						<option value="1">Acesso total</option>
+						<option value="2">Acesso Limitado</option>
 						</select>
+						<p style="color:red">*Com nível limitado o menu de colaboradores é oculto</p>
                     </div>
 
                     <div class="container-login100-form-btn">
@@ -118,6 +152,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </html>
 
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+	$user['nome_colaborador']   = $_POST['nome'];
+	$user['user'] 		        = $_POST['user'];
+	$user['pass']               = $_POST['pass'];
+	$user['data_cadastro']      = $_POST['data'];
+	$user['cidade']             = $_POST['cidade'];
+	$user['estado']             = $_POST['estado'];
+	$user['cep']                = $_POST['cep'];
+	$user['rua']                = $_POST['rua'];
+	//$user['level_acess']        = $_POST['level'];
+	$user['usuario_fornecedor'] = 'usuario';
+		
+	$this->LoginCadastroModel->insert_user($user);
+		
+	return $user;	
+}
+?>
 
 <style type="text/css">
 
