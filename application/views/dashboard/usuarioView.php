@@ -2,12 +2,6 @@
 include_once('header.php');
 ?>
 
-<style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-</style>
 
 <h2>Página de usuários</h2>
 <p>Aqui você poderá ver, editar, adicionar ou inativar usuários</p>

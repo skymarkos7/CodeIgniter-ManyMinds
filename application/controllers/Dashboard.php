@@ -19,7 +19,9 @@ class Dashboard extends CI_Controller {
 		$result = $this->ProductModel->list_product();
 		$data   = array("ProductModel" => $result);
 		
+		$this->load->view('dashboard/header.php');
 		$this->load->view('dashboard/produtosView.php', $data);	
+		$this->load->view('dashboard/footer.php');	
 
 	}
 
