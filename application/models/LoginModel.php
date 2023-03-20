@@ -15,17 +15,16 @@ class LoginModel extends CI_Model {
 		return $result;
 	}
 
-	// public function list_logs($login) {
-	// 	$this->db->select("user");
-	// 	$this->db->select('pass');
-	// 	$this->db->select('level_acess');	
-	// 	$this->db->select('nome_colaborador');		
-	// 	$this->db->where('user', $login);
+	public function list_logs($ip) {
+		$this->db->select("ip");
+		$this->db->select('tentativas');
+		$this->db->select('data');		
+		$this->db->where('ip', $ip);
 
-	// 	$result = $this->db->get("colaborador")->result();
+		$result = $this->db->get("logs")->result();
 
-	// 	return $result;
-	// }
+		return $result;
+	}
 
 	public function insert_logs($log) {
 		// $data = array(

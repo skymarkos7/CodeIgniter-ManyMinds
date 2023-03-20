@@ -8,7 +8,8 @@ class Login extends CI_Controller {
 	 */
 	public function index()	{
 		$this->load->model("LoginModel", "LoginModel");
-
+		$this->load->model("LogsModel", "LogsModel");
+		
 		// $result = $this->LoginModel->list_user();
 		// $data   = array("LoginModel" => $result);
 

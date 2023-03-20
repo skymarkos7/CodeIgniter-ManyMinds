@@ -1,45 +1,47 @@
 
 <?php
 
-// function getOS() {
-//     $user_agent = $_SERVER['HTTP_USER_AGENT'];
+function getOS() {
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
-//     $os_array = array(
-//         'windows nt 10'      =>  'Windows 10',
-//         'windows nt 6\.3'    =>  'Windows 8.1',
-//         'windows nt 6\.2'    =>  'Windows 8',
-//         'windows nt 6\.1'    =>  'Windows 7',
-//         'windows nt 6\.0'    =>  'Windows Vista',
-//         'windows nt 5\.2'    =>  'Windows Server 2003/XP x64',
-//         'windows nt 5\.1'    =>  'Windows XP',
-//         'windows xp'         =>  'Windows XP',
-//         'windows nt 5\.0'    =>  'Windows 2000',
-//         'windows me'         =>  'Windows ME',
-//         'win98'              =>  'Windows 98',
-//         'win95'              =>  'Windows 95',
-//         'win16'              =>  'Windows 3.11',
-//         'macintosh|mac os x' =>  'Mac OS X',
-//         'mac_powerpc'        =>  'Mac OS 9',
-//         'linux'              =>  'Linux',
-//         'ubuntu'             =>  'Ubuntu',
-//         'iphone'             =>  'iPhone',
-//         'ipod'               =>  'iPod',
-//         'ipad'               =>  'iPad',
-//         'android'            =>  'Android',
-//         'blackberry'         =>  'BlackBerry',
-//         'webos'              =>  'Mobile'
-//     );
+    $os_array = array(
+        'windows nt 10'      =>  'Windows 10',
+        'windows nt 6\.3'    =>  'Windows 8.1',
+        'windows nt 6\.2'    =>  'Windows 8',
+        'windows nt 6\.1'    =>  'Windows 7',
+        'windows nt 6\.0'    =>  'Windows Vista',
+        'windows nt 5\.2'    =>  'Windows Server 2003/XP x64',
+        'windows nt 5\.1'    =>  'Windows XP',
+        'windows xp'         =>  'Windows XP',
+        'windows nt 5\.0'    =>  'Windows 2000',
+        'windows me'         =>  'Windows ME',
+        'win98'              =>  'Windows 98',
+        'win95'              =>  'Windows 95',
+        'win16'              =>  'Windows 3.11',
+        'macintosh|mac os x' =>  'Mac OS X',
+        'mac_powerpc'        =>  'Mac OS 9',
+        'linux'              =>  'Linux',
+        'ubuntu'             =>  'Ubuntu',
+        'iphone'             =>  'iPhone',
+        'ipod'               =>  'iPod',
+        'ipad'               =>  'iPad',
+        'android'            =>  'Android',
+        'blackberry'         =>  'BlackBerry',
+        'webos'              =>  'Mobile'
+    );
 
-//     foreach ($os_array as $regex => $value) {
-//         if (preg_match('/' . $regex . '/i', $user_agent)) {
-//             return $value;
-//         }
-//     }
+    foreach ($os_array as $regex => $value) {
+        if (preg_match('/' . $regex . '/i', $user_agent)) {
+            return $value;
+        }
+    }
 
-//     return 'Unknown OS Platform';
-// }
+    return 'Unknown OS Platform';
+}
 
-// $_SESSION['os'] = 'Sistema operacional: '. getOS();
+
+
+
 
 ?>
 
@@ -48,9 +50,20 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 session_start();  // inicia a sessão
 
-echo $_SESSION['tentativas'];
-echo($ip = file_get_contents('https://api.ipify.org'));
 
+//$tentativass = (int)$_SESSION['tentativas'];
+$ip = file_get_contents('https://api.ipify.org');
+
+$logs = $this->LoginModel->list_logs($ip);
+foreach ($logs as $l) { // trazendo infos do banco
+     $ipp[]        = $l->ip;
+     $tentativas[] = $l->tentativas;
+     $data[]       = $l->data;
+}
+//var_dump($tentativas);
+
+
+$tenta;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	if (isset($_POST['user']) && empty($_POST['user']) == false) {  //verifica se o e-mail está preenchido
@@ -72,13 +85,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			header("Location: ../dashboard/");
 			die;
 		} else {
-			$incorrect = "<b style='color:red'>Login incorreto, você tem ".$_SESSION['tentativas']." tentativas restantes</b>"; // aviso de login incorreto
+			if(isset($count)){
+			$incorrect = "<b style='color:red'>Login incorreto, você usou ".$count." tentativa(s)</b>"; // aviso de login incorreto
+			}
 
-			$log['ip']         = $ip;
-			$log['tentativas'] = $_SESSION['tentativas'];
-			$log['data']       = date('d/m/Y H:i');
+			$sendLog['ip']         = $ip;
+			//$sendLog['tentativas'] = $_SESSION['tentativas'];
+			$sendLog['data']       = date('d/m/Y H:i');
 			//$logs['os']	       = $_SESSION['os'];
-			$log = $this->LoginModel->insert_logs($log);
+			$log = $this->LoginModel->insert_logs($sendLog);
+
+			
 		}
 	}
 }
@@ -96,10 +113,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	<body>
 
+	
+		<div  <?php 
+		
+		if(isset($ipp) && count($ipp) > 3){ 
+						
+			echo "hidden ";
+		} 
 
-		<div class="limiter">
-			<div class="container-login100">
-				<div class="wrap-login100">
+		?> 
+		class="limiter"> 
+			<div hidden class="container-login100">
+				<div hidden class="wrap-login100">
 					<div class="login100-pic js-tilt" data-tilt>
 						<img src="https://www.freeiconspng.com/uploads/user-login-icon-14.png">
 					</div>					
@@ -133,7 +158,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 															
 								if(isset($incorrect )){
 									echo $incorrect;
-								}							
+									
+								}	
+								
+								
+								if(isset($ipp) ){
+									//$_SESSION['tentativas'] = $_SESSION['tentativas']-1 ;
+									echo "<h1 style='color:red; margin:50px'>Você será bloqueado por um minuto!</h1> ";
+									echo "<h3 style='color:blue; margin:50px'>IP: ".$ip."</h3> ";
+									echo '<h3 style="color:blue; margin:50px">Sistema operacional: '. getOS().'</h3>';
+									
+								}
+	
+								if(isset($ipp) && count($ipp) > 2){
+									//$_SESSION['tentativas'] = $_SESSION['tentativas']-1 ;
+									echo "<h1 style='color:red; margin:50px'>Ultima tentativa!</h1> ";
+									
+								}
+	
+								if(isset($ipp) && count($ipp) > 3){
+									sleep(60);
+									$result = $this->LogsModel->truncate_logs();					
+										
+									
+								 }
+	
+	
 							?>
 						</div><br>
 
@@ -579,9 +629,7 @@ iframe {
     }
 }
 
-</style>
-	color: #fff;
-}
+
 a{
 	text-decoration: none;
 	color: #fff;
