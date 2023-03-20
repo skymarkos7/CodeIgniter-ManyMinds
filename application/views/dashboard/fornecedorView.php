@@ -85,7 +85,6 @@
 <h4>Adicionar novo fornecedor</h4>	
 
 <form method="POST" action="">
-	<!-- <input required name="situacao" placeholder="Situação" type="text"> -->
 	<select required name="level" id="permissao">
 		<option value="ativo">Ativo</option>
 		<option value="inativo">Inativo</option>

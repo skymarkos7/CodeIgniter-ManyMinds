@@ -78,9 +78,12 @@
 
 <form method="POST" action="">
 	<input required name="fornecedor" placeholder="Fornecedor do produto" type="text">
-	<input required name="observacao" placeholder="Observação" type="text">
-	<input required name="situacao" placeholder="ativo ou finalizado" type="text">
-	<input required name="quantidade" placeholder="quantidade" type="text">
+	<textarea id="story" name="observacao" rows="1" placeholder="Obeservações" cols="30"></textarea>
+	<select required name="situacao" id="permissao">
+		<option value="ativo">Ativo</option>
+		<option value="finalizado">Finalizado</option>
+	</select>
+	<input required name="quantidade" placeholder="quantidade" type="number">
 	<input required name="preco" placeholder="Preço unitário" type="text">
 	<a href="pedidos"><input type="submit" value="Fazer pedido"></a>
 </form>
@@ -94,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$pedidos['quantidade']         = $_POST['quantidade'];
 	$pedidos['preco_unitario']     = $_POST['preco'];
 		
-	$this->PedidosModel->insert_user($pedidos);
+	$this->PedidosModel->insert_pedidos($pedidos);
 		
 	return $pedidos;	
 }
