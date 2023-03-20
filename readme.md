@@ -6,6 +6,9 @@
   Usuário limitado:
   Login: comum@gmail.com
   senha: comum@gmail.com
+
+  Hospedado para facilitar
+  https://manyminds.lourenco.club/
  
 
  
@@ -28,6 +31,7 @@
 	- arquivo sql para importação na pasta docs do projeto
 	- respeitada as regras de acesso ao banco do codeignite
 	- hospedei o banco para facilitar os testes
+	- Hospedado tbm o projeto para facilitar: https://manyminds.lourenco.club/
 
 
 - Auteração de tabelas
