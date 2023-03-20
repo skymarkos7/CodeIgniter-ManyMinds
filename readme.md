@@ -13,9 +13,9 @@
 - Tela de Login  
 	- Responssivo  
 	- 3 tentativas, bloqueio por 60 segundos
-	- sesão aplicadas em todas as páginas
-	- nível de acesso
-	- serviço externo para capturar ip https://api.ipify.org
+	- sessão aplicadas em todas as páginas
+	- nível de acesso aplicado a opções do menu
+	- serviço externo para capturar ip https://api.ipify.org e OS
 	- capturando senha com base64_encode() para codificar a senha no banco
 	- utulizando addSlesh nos inputs para evitar SQL injection
 	- permitindo cadastro de novos usuários para testes
