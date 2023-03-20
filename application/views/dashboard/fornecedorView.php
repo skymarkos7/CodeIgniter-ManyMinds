@@ -19,7 +19,7 @@
 	foreach ($FornecedorModel as $f) { // trazendo infos do banco	
 						
 		$situacao[] = $f->ativo_inativo;
-		$nome[]     = $f->nome_colaborador;
+		$nome[]     = $f->nome_colaborador;		 
 		$data[]     = $f->data_cadastro;
 		$cidade[]   = $f->cidade;
 		$estado[]   = $f->estado;
@@ -89,7 +89,7 @@
 		<option value="ativo">Ativo</option>
 		<option value="inativo">Inativo</option>
 	</select>
-	<input required name="colaborador" placeholder="Nome do colaborador" type="text">
+	<input required name="colaborador" placeholder="Nome do fornecedor" type="text">
 	<input required name="data" placeholder="data de parceria" type="date"> <!-- Inserir automaticamente pegando data atual-->
 	<input required name="cidade" placeholder="cidade" type="text">
 	<input name="estado" placeholder="estado" type="text">

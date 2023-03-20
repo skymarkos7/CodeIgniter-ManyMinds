@@ -14,9 +14,11 @@
   	$i = 0;	
 	foreach ($ProductModel as $p) { // trazendo infos do banco	
 						
-		$nome[]          = $p->nome_produto;
-		$fornecedor[]    = $p->fornecedor_produto;
-		$ativo_inativo[] = $p->ativo_inativo;
+		$nome[]                     = $p->nome_produto;
+		//$_SESSION['produtos'][]     = $nome;
+		$fornecedor[]               = $p->fornecedor_produto;
+		//$_SESSION['fornecedores'][] = $p->fornecedor_produto;
+		$ativo_inativo[]            = $p->ativo_inativo;
 		
 		if($ativo_inativo[$i] == 'inativo'){
 
@@ -31,7 +33,11 @@
 			echo "<td>".$nome[$i]."</td>";
 			echo "<td>".$fornecedor[$i]."</td>";
 			echo "<td>".$ativo_inativo[$i]."</td>";	
-			echo "<td><button>Desativar</button></td>";	
+			echo "<td>
+			<form method='get'>
+			<input value='desativar' type='submit'>
+			</form>
+			</td>";	
 			echo "</tr>";			
 		
 		}
@@ -83,6 +89,7 @@
 </form>
 
 <?php
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$products['nome_produto']       = $_POST['nome'];

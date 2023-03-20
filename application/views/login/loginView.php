@@ -164,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 								
 								if(isset($ipp) ){
 									//$_SESSION['tentativas'] = $_SESSION['tentativas']-1 ;
-									echo "<h1 style='color:red; margin:50px'>Você será bloqueado por um minuto!</h1> ";
+									echo "<h1 style='color:red; margin:50px'>Você será bloqueado por um minuto! <br> e sua tela ficará branca durante esse tempo (voltará altomaticamente após)</h1> ";
 									echo "<h3 style='color:blue; margin:50px'>IP: ".$ip."</h3> ";
 									echo '<h3 style="color:blue; margin:50px">Sistema operacional: '. getOS().'</h3>';
 									

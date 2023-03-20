@@ -4,6 +4,7 @@
 
 <table style="width:100%">
   <tr>
+    <th>produto</th>
     <th>Fornecedor do produto</th>
     <th>Observação</th> 
     <th>Situação</th>
@@ -14,7 +15,8 @@
   <?php
   	$i = 0;	
 	foreach ($PedidosModel as $p) { // trazendo infos do banco	
-						
+				
+		$produto[]    = $p->produto;
 		$fornecedor[] = $p->fornecedor_produto;
 		$observacao[] = $p->observacao;
 		$situacao[]   = $p->ativo_finalizado;
@@ -24,6 +26,7 @@
 		if($situacao[$i] == 'finalizado'){
 
 			echo "<tr style='background-color:grey; font-family:Consolas'>";
+			echo "<td>".$produto[$i]."</td>";
 			echo "<td>".$fornecedor[$i]."</td>";
 			echo "<td>".$observacao[$i]."</td>";
 			echo "<td>".$situacao[$i]."</td>";
@@ -32,6 +35,7 @@
 			echo "</tr>";	
 		} else {
 			echo "<tr>";
+			echo "<td>".$produto[$i]."</td>";
 			echo "<td>".$fornecedor[$i]."</td>";
 			echo "<td>".$observacao[$i]."</td>";
 			echo "<td>".$situacao[$i]."</td>";
@@ -42,8 +46,20 @@
 		$i++;
 			    
 	}	
+	// $this->load->model("ProductModel", "ProductModel");
+	 $result = $this->ProductModel->list_product_activ();
+	
+	foreach ($result as $p) { // trazendo infos do banco
+    $produtos[]     = $p->nome_produto;
+	$fornecedores[] = $p->fornecedor_produto;
+	//$fornecedores[] = $p->fornecedor_produto;
+	
+	}
+	$i = 0;	
+	
+	// ?>
 
-	?>
+	
      
 </table>
 
@@ -77,7 +93,22 @@
 <h4>Realizar um novo pedido</h4>	
 
 <form method="POST" action="">
-	<input required name="fornecedor" placeholder="Fornecedor do produto" type="text">
+<select required name="produto" id="permissao">
+		<?php 
+			foreach ($fornecedores as $pip) { 
+				echo '<option value="'.$pip.'">'.$pip.'</option>';
+			 }
+		?>
+		
+	</select>		
+	<select required name="fornecedor" id="permissao">
+		<?php 
+			foreach ($produtos as $pipa) { 
+				echo '<option value="'.$pipa.'">'.$pipa.'</option>';
+			 }
+		?>
+		
+	</select>
 	<textarea id="story" name="observacao" rows="1" placeholder="Obeservações" cols="30"></textarea>
 	<select required name="situacao" id="permissao">
 		<option value="ativo">Ativo</option>
@@ -91,6 +122,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	$pedidos['produto']            = $_POST['produto'];
 	$pedidos['fornecedor_produto'] = $_POST['fornecedor'];
 	$pedidos['observacao'] 		   = $_POST['observacao'];
 	$pedidos['ativo_finalizado']   = $_POST['situacao'];
