@@ -1,35 +1,86 @@
 
+<?php
+
+// function getOS() {
+//     $user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+//     $os_array = array(
+//         'windows nt 10'      =>  'Windows 10',
+//         'windows nt 6\.3'    =>  'Windows 8.1',
+//         'windows nt 6\.2'    =>  'Windows 8',
+//         'windows nt 6\.1'    =>  'Windows 7',
+//         'windows nt 6\.0'    =>  'Windows Vista',
+//         'windows nt 5\.2'    =>  'Windows Server 2003/XP x64',
+//         'windows nt 5\.1'    =>  'Windows XP',
+//         'windows xp'         =>  'Windows XP',
+//         'windows nt 5\.0'    =>  'Windows 2000',
+//         'windows me'         =>  'Windows ME',
+//         'win98'              =>  'Windows 98',
+//         'win95'              =>  'Windows 95',
+//         'win16'              =>  'Windows 3.11',
+//         'macintosh|mac os x' =>  'Mac OS X',
+//         'mac_powerpc'        =>  'Mac OS 9',
+//         'linux'              =>  'Linux',
+//         'ubuntu'             =>  'Ubuntu',
+//         'iphone'             =>  'iPhone',
+//         'ipod'               =>  'iPod',
+//         'ipad'               =>  'iPad',
+//         'android'            =>  'Android',
+//         'blackberry'         =>  'BlackBerry',
+//         'webos'              =>  'Mobile'
+//     );
+
+//     foreach ($os_array as $regex => $value) {
+//         if (preg_match('/' . $regex . '/i', $user_agent)) {
+//             return $value;
+//         }
+//     }
+
+//     return 'Unknown OS Platform';
+// }
+
+// $_SESSION['os'] = 'Sistema operacional: '. getOS();
+
+?>
 
 <?php
 
 defined('BASEPATH') or exit('No direct script access allowed');
 session_start();  // inicia a sessão
 
+echo $_SESSION['tentativas'];
+echo($ip = file_get_contents('https://api.ipify.org'));
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	if (isset($_POST['user']) && empty($_POST['user']) == false) {  //verifica se o e-mail está preenchido
-    $user = addslashes($_POST['user']);                             //recebe o email ( addslashes impede que o usuario manipule o banco)
-    $pass = base64_encode(addslashes($_POST['pass']));              //recebe a senha digitada ( addslashes impede que o usuario manipule o banco)
-    $id   = session_id();	                                        //Gera um id para a sessão
+		$user = addslashes($_POST['user']);                             //recebe o email ( addslashes impede que o usuario manipule o banco)
+		$pass = base64_encode(addslashes($_POST['pass']));              //recebe a senha digitada ( addslashes impede que o usuario manipule o banco)
+		$id   = session_id();	                                        //Gera um id para a sessão
 	}
 
 	$result = $this->LoginModel->list_user($user);
 	//var_dump($result[0]->user);
 
-	if($result[0]->user == $user && $pass == $result[0]->pass){	 //verifica se existe o usuário digitado e se a senha está correta.		  
-		$_SESSION['id']   =  $id;
-		$_SESSION['user'] =  $user;
-		$_SESSION['name'] =  $result[0]->nome_colaborador;
-		$_SESSION['level_acess'] =  $result[0]->level_acess;
+	if (isset($result[0]->user)) {
+		if ($result[0]->user == $user && $pass == $result[0]->pass) {	 //verifica se existe o usuário digitado e se a senha está correta.
+			$_SESSION['id']   =  $id;
+			$_SESSION['user'] =  $user;
+			$_SESSION['name'] =  $result[0]->nome_colaborador;
+			$_SESSION['level_acess'] =  $result[0]->level_acess;
 
-		header("Location: ../dashboard/");
-		die;
-			
-	}else{
-		$incorrect = "<b style='color:red'>Login incorreto, você tem {{}} tentativas restantes</b>"; // aviso de login incorreto
+			header("Location: ../dashboard/");
+			die;
+		} else {
+			$incorrect = "<b style='color:red'>Login incorreto, você tem ".$_SESSION['tentativas']." tentativas restantes</b>"; // aviso de login incorreto
+
+			$log['ip']         = $ip;
+			$log['tentativas'] = $_SESSION['tentativas'];
+			$log['data']       = date('d/m/Y H:i');
+			//$logs['os']	       = $_SESSION['os'];
+			$log = $this->LoginModel->insert_logs($log);
+		}
 	}
-
 }
 
 ?>
@@ -59,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						</span>
 
 						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-							<input required class="input100" type="text" name="user" placeholder="Email">
+							<input required class="input100" type="email" name="user" placeholder="Email">
 							<span class="focus-input100"></span>
 							<span class="symbol-input100">
 								<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -78,7 +129,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							<button  class="login100-form-btn">
 								Login
 							</button>
-							<?php 
+							<?php 							
+															
 								if(isset($incorrect )){
 									echo $incorrect;
 								}							
@@ -100,9 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 </html>
 
-<?php 
-session_destroy(); 
-?>
+
 
 <script>
 	

@@ -12,6 +12,7 @@
 - Tela de Login  
 	- Responssivo  
 	- 3 tentativas, bloqueio por 30 segundos
+	- serviço externo de ip https://api.ipify.org
 	- comunicar no telegram as tentativas de login
 	- capturando senha com base64_encode() para codificar a senha no banco
 	- utulizando () nos inputs para evitar SQL injection
