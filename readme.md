@@ -35,5 +35,12 @@
 	- adicionando novos itens
 
 - versionamento 
-	- desenvolvido na branch develop e emergido para a principal no fim do projeto	
+	- desenvolvido na branch develop e emergido para a principal no fim do projeto
+	- gitHub  https://github.com/skymarkos7
+	
+
+
+- Web Service
+	- http://localhost/ci/index.php/ws
+	- autenticao de
 
