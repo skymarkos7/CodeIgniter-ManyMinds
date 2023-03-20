@@ -27,6 +27,7 @@
 	- senha do banco: manypass
 	- arquivo sql para importação na pasta docs do projeto
 	- respeitada as regras de acesso ao banco do codeignite
+	- hospedei o banco para facilitar os testes
 
 
 - Auteração de tabelas
