@@ -77,11 +77,11 @@
 <h4>Realizar um novo pedido</h4>	
 
 <form method="POST" action="">
-	<input name="fornecedor" placeholder="Fornecedor do produto" type="text">
-	<input name="observacao" placeholder="Observação" type="text">
-	<input name="situacao" placeholder="ativo ou finalizado" type="text">
-	<input name="quantidade" placeholder="quantidade" type="text">
-	<input name="preco" placeholder="Preço unitário" type="text">
+	<input required name="fornecedor" placeholder="Fornecedor do produto" type="text">
+	<input required name="observacao" placeholder="Observação" type="text">
+	<input required name="situacao" placeholder="ativo ou finalizado" type="text">
+	<input required name="quantidade" placeholder="quantidade" type="text">
+	<input required name="preco" placeholder="Preço unitário" type="text">
 	<a href="pedidos"><input type="submit" value="Fazer pedido"></a>
 </form>
 

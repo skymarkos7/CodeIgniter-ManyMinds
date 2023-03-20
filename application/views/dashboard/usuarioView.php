@@ -1,6 +1,6 @@
 
 <h2>Página de usuários</h2>
-<p>Aqui você poderá <span style="color:green"><b>ver</b></span>, <span style="color:chocolate"><b>editar</b></span> ou <span style="color:red"><b>inativar</b></span> usuários</p>
+<p>Aqui você poderá apenas <span style="color:green"><b>ver</b></span> e <span style="color:red"><b>inativar</b></span> usuários</p>
 
 <table style="width:100%">
   <tr>

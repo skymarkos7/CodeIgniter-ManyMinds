@@ -85,10 +85,14 @@
 <h4>Adicionar novo fornecedor</h4>	
 
 <form method="POST" action="">
-	<input name="situacao" placeholder="Situação" type="text">
-	<input name="colaborador" placeholder="Nome do colaborador" type="text">
-	<input name="data" placeholder="data de cadastro" type="text"> <!-- Inserir automaticamente pegando data atual-->
-	<input name="cidade" placeholder="cidade" type="text">
+	<!-- <input required name="situacao" placeholder="Situação" type="text"> -->
+	<select required name="level" id="permissao">
+		<option value="ativo">Ativo</option>
+		<option value="inativo">Inativo</option>
+	</select>
+	<input required name="colaborador" placeholder="Nome do colaborador" type="text">
+	<input required name="data" placeholder="data de parceria" type="date"> <!-- Inserir automaticamente pegando data atual-->
+	<input required name="cidade" placeholder="cidade" type="text">
 	<input name="estado" placeholder="estado" type="text">
 	<input name="cep" placeholder="cep" type="text">
 	<input name="rua" placeholder="rua" type="text">
@@ -98,13 +102,14 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$fornecedor['ativo_inativo']    = $_POST['situacao'];
+	$fornecedor['ativo_inativo']    = $_POST['level'];
 	$fornecedor['nome_colaborador'] = $_POST['colaborador'];
 	$fornecedor['data_cadastro']    = $_POST['data'];
 	$fornecedor['cidade']           = $_POST['cidade'];
 	$fornecedor['estado']           = $_POST['estado'];
 	$fornecedor['cep']              = $_POST['cep'];
 	$fornecedor['rua']              = $_POST['rua'];
+	$fornecedor['usuario_fornecedor'] = 'fornecedor';
 		
 	$this->FornecedorModel->insert_fornecedor($fornecedor);
 		
