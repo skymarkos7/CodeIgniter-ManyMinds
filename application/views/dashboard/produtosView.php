@@ -44,6 +44,30 @@
 	
 	?>
 	
+	<script>
+	$(function () {
+    $("td").dblclick(function () {
+        var conteudoOriginal = $(this).text();
+
+        $(this).addClass("celulaEmEdicao");
+        $(this).html("<input type='text' value='" + conteudoOriginal + "' />");
+        $(this).children().first().focus();
+
+        $(this).children().first().keypress(function (e) {
+            if (e.which == 13) {
+                var novoConteudo = $(this).val();
+                $(this).parent().text(novoConteudo);
+                $(this).parent().removeClass("celulaEmEdicao");
+            }
+        });
+
+	$(this).children().first().blur(function(){
+		$(this).parent().text(conteudoOriginal);
+		$(this).parent().removeClass("celulaEmEdicao");
+	});
+    });
+});
+</script>
      
 </table>
 <br>
@@ -52,9 +76,9 @@
 		
 
 <form method="POST" action="">
-	<input name="nome" placeholder="Nome do produto" type="text">
-	<input name="fornecedor" placeholder="Fornecedor" type="text">
-	<input name="situacao" placeholder="Situação" type="text">
+	<input required name="nome" placeholder="Nome do produto" type="text">
+	<input required name="fornecedor" placeholder="Fornecedor" type="text">
+	<input required name="situacao" placeholder="Situação" type="text">
 	<a href="produtos"><input type="submit" value="Inserir novo produto"></a>
 </form>
 

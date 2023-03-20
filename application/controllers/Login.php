@@ -19,41 +19,41 @@ class Login extends CI_Controller {
 
 
 
-	// public function cadastro() {
+	public function cadastro() {
 
-	// 	$this->load->model("LoginCadastroModel", "LoginCadastroModel");
+		$this->load->model("LoginCadastroModel", "LoginCadastroModel");
 				
-	// 	$this->load->view("login/cadastroView");
+		$this->load->view("login/cadastroView");
 		
-	// 	// if (isset($_POST['email'])) {
-	// 	// 	var_dump($_POST['email']);			
-	// 	// }
-	// }
+		// if (isset($_POST['email'])) {
+		// 	var_dump($_POST['email']);			
+		// }
+	}
 
 
 
-	// public function list_array() {
+	public function list_array() {
 
-	// 	$this->load->model("LoginModel", "LoginModel");
+		$this->load->model("LoginModel", "LoginModel");
 
-	// 	$result = $this->LoginModel->list_user();
+		$result = $this->LoginModel->list_user();
 
-	// 	echo '<pre>';
-	// 	var_dump($result);
-	// 	echo '<pre>';
+		echo '<pre>';
+		var_dump($result);
+		echo '<pre>';
 
-	// }
+	}
 
 
 
-	// public function list_table() {
+	public function list_table() {
 
-	// 	$this->load->model("LoginModel", "LoginModel");
+		$this->load->model("LoginModel", "LoginModel");
 
-	// 	$result = $this->LoginModel->list_user();
-	// 	$dados = array("LoginModel" => $result);
+		$result = $this->LoginModel->list_user();
+		$dados = array("LoginModel" => $result);
 
-	// 	$this->load->view("lista_tabela_teste", $dados);
+		$this->load->view("lista_tabela_teste", $dados);
 
-	// }
+	}
 }
