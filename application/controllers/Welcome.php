@@ -7,7 +7,10 @@ class Welcome extends CI_Controller
 {
     public function index()
     {
-        session_destroy(); 
+		if(isset($_SESSION)){
+			session_destroy(); 
+		}
+        
 		session_start();
 		$_SESSION['tentativas'] = 3;
 		$this->load->model("LogsModel", "LogsModel");

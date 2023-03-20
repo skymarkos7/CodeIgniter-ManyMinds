@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'manypass',
-	'database' => 'many_minds',
+	'hostname' => 'ns1014.hostgator.com.br',
+	'username' => 'louren93_louren93_many_minds',
+	'password' => 'louren93_many_minds',
+	'database' => 'louren93_many_minds',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
